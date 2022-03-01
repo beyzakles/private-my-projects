@@ -21,11 +21,9 @@ Parameters:
     Description: Please enter your valid Key pair.
     Type: AWS::EC2::KeyPair::KeyName
 
-
   Subnets:
     Description: Choose your subnets.
     Type: List<AWS::EC2::Subnet::Id>
-
 
 Resources:
   ALBSecurityGroup:
@@ -49,7 +47,6 @@ Resources:
           FromPort: 22
           ToPort: 22
           CidrIp: 0.0.0.0/0
-
 
         - IpProtocol: tcp
           FromPort: 80
@@ -88,6 +85,7 @@ Resources:
                 curl -s --create-dirs -o "/home/ec2-user/phonebook-app.py" -L "$FOLDER"phonebook-app.py
                 python3 /home/ec2-user/phonebook-app.py
               - MyDBURI: !GetAtt MyDatabaseServer.Endpoint.Address
+
 
   WebServerTG:
     Type: AWS::ElasticLoadBalancingV2::TargetGroup
@@ -151,7 +149,7 @@ Resources:
       AllowMajorVersionUpgrade: false
       AutoMinorVersionUpgrade: true
       BackupRetentionPeriod: 0
-      DBInstanceIdentifier: beyza-db-3
+      DBInstanceIdentifier: vincenzo-db-3
       DBName: clarusway_phonebook
       DBSecurityGroups: 
         - !Ref MyDBSecurityGroup
